@@ -4,22 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[str]
         """
-        n = len(nums)
-        if n < 1:
-            return []
-        if n == 1:
-            return [str(nums[0])]
-
-        nums.append(-1)
-        p = nums[0]
+        i, n = 0, len(nums)
         res = []
-        for i in range(n):
-            if nums[i + 1] - nums[i] > 1 or i == n - 1:
-                if p == nums[i]:
-                    res.append(str(p))
-                else:
-                    res.append(str(p) + "->" + str(nums[i]))
-                p = nums[i + 1]
+        while i < n:
+            p = nums[i]
+
+            #i = n - 1最有项特殊处理
+            while i < n - 1 and nums[i + 1] - nums[i] == 1:
+                i += 1
+
+            if p == nums[i]:
+                res.append(str(p))
+            else:
+                res.append(str(p) + "->" + str(nums[i]))
+            i += 1
         return res
-s = Solution()
-print s.summaryRanges([1, 3, 4, 6, 7, 8])
