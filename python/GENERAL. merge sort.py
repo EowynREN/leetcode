@@ -1,7 +1,7 @@
 class Solution:
     # @param {integer[]} nums
     # @return {string}
-    def largestNumber(self, nums):
+    def sortIntegers(self, nums):
         self.split(nums, 0, len(nums) - 1)
         return nums
 
@@ -35,4 +35,4 @@ class Solution:
             nums[i] = temp[i - left]
 
 s = Solution()
-print s.largestNumber([10,9,8,7,6,5,4,3,2,1])
+print s.sortIntegers([10,9,8,7,6,5,4,3,2,1])
