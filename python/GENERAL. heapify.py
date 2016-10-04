@@ -3,11 +3,11 @@ class Solution:
     # @return {integer[]} nums
 
     def heapify(self, nums):
-        for i in range(len(nums) / 2, - 1, -1 ):
-            self.fixDown(nums, i)
+        for i in range(len(nums) / 2 - 1, - 1, -1 ):
+            self.siftDown(nums, i)
         return nums
 
-    def fixDown(self, nums, parent):
+    def siftDown(self, nums, parent):
         n = len(nums)
         smallest = parent
 

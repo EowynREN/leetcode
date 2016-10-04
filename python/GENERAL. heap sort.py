@@ -7,7 +7,7 @@ class Solution:
     def sortIntegers(self, nums):
         #首先,构建一个大顶堆
         for i in range(len(nums)):
-            self.heapifyUp(nums, i)
+            self.heapify(nums, i)
 
         #然后不定的把最大的一个数放到n - 1, n - 2, ..., 2, 1, 0, 以此得到升序数列
         for i in range(len(nums) - 1, -1, -1): #此处i从n - 1开始,一直到0
@@ -17,11 +17,11 @@ class Solution:
 
             #注意这里是，不是i- 1,因为heapifyDown当中用的是 < n,而不是<=n
             #这里是[0, n), [0, n - 1), ...
-            self.heapifyDown(nums, 0, i)
+            self.siftDown(nums, 0, i)
 
         return nums
 
-    def heapifyUp(self, nums, child):
+    def heapify(self, nums, child):
         parent = (child - 1) / 2
 
         while child != 0 and nums[parent] < nums[child]:
@@ -30,7 +30,7 @@ class Solution:
             child = parent
             parent = (child - 1) / 2
 
-    def heapifyDown(self, nums, parent, n):
+    def siftDown(self, nums, parent, n):
         lchild = 2 * parent + 1 #left child
         rchild = 2 * parent + 2 #right child
 
