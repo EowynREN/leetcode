@@ -20,6 +20,7 @@ class Solution:
 
     def dfs(self, grid, i, j):
         n, m = len(grid), len(grid[0])
+        # 此处的终止条件: 1. 超出边界  2. 已经不是陆地了(not grid[i][j])
         if i < 0 or i >= n or j < 0 or j >= m or not grid[i][j]:
             return
 
