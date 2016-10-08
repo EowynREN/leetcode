@@ -1,3 +1,9 @@
+# 思路: 此题的题眼是,如果是图一定成环
+#      也就是说: 在这个环里的任意两个node会拥有相同的ancestor
+#      也就是说: 需要在edges集合中找出是否有两个点,拥有同样的father
+#      ----> union find
+
+
 class UnionFind():
     def __init__(self, n):
         self.father = {}
