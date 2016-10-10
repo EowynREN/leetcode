@@ -62,9 +62,14 @@ class Solution:
         # O(n^2)
         for node in nodes:
             for neighbour in node.neighbors:
-                fnode = uf.compressed_find(node.label)
-                fneighbour = uf.compressed_find(neighbour.label)
-                if fnode != fneighbour:
+                # 下面注释的这段代码,不需要也可以过
+                # 个人觉得略多余
+                # 因为在union会比较node.label和neighbour.label的ancestor是否一样
+                # 不必要再此处比较
+
+                # fnode = uf.compressed_find(node.label)
+                # fneighbour = uf.compressed_find(neighbour.label)
+                # if fnode != fneighbour:
                     uf.union(node.label, neighbour.label)
 
         # 此处注意: 一定要从hashset里遍历所有的node,然后用compressed_find查找他们的ancestor
