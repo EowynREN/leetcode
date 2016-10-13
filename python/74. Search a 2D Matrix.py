@@ -5,36 +5,23 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        # edge case
         if not matrix or not matrix[0]:
             return False
 
-        # find the row the target in
-        left, right = 0, len(matrix) - 1
+        n, m = len(matrix), len(matrix[0])
+        l = n * m
+
+        left, right = 0, l - 1
         while left < right:
             mid = left + (right - left) / 2
-            if matrix[mid][0] == target:
-                return True
-            elif matrix[mid][0] > target:
-                right = mid
-            elif matrix[mid][0] < target:
-                left  = mid + 1
+            grid = matrix[mid / m][mid % m]
 
-        # record the row
-        if target < matrix[left][0]:
-             left -= 1
-        i = left
-
-        # find the column target at
-        left, right = 0, len(matrix[0]) - 1
-        while left < right:
-            mid = left + (right - left) / 2
-            if matrix[i][mid] == target:
+            if grid == target:
                 return True
-            elif matrix[i][mid] > target:
-                right = mid
-            elif matrix[i][mid] < target:
+            elif grid < target:
                 left = mid + 1
+            elif grid > target:
+                right = mid
 
         # edge cases for the:
         #                    matrix only have one row                              e.g., [[1, 2,3]],
@@ -43,8 +30,10 @@ class Solution(object):
         #                                                                                 [10, 11, 16, 20],
         #                                                 target = 7                      [23, 30, 34, 50]]
         # 这些 edge case 都是因为 while left < right, 左右指针在相等时候跳出循环(或者初始值就相等,不能进入循环)
-        if matrix[i][left] == target:
+        # remind: left / m, not left / n
+        #         right / m, not right / n
+        if matrix[left / m][left % m] == target:
             return True
-        if matrix[i][right] == target:
+        if matrix[right / m][right % m] == target:
             return True
         return False
