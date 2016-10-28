@@ -1,29 +1,18 @@
 class Solution:
-    """
-    @param A: A list of integers
-    @param elem: An integer
-    @return: The new length after remove
-    """
-    def removeElement(self, A, elem):
+    # @param strs: A list of strings
+    # @return: The longest common prefix
+    def longestCommonPrefix(self, strs):
         # write your code here
-        isElem, notElem = 0, len(A) - 1
-        count = 0
+        if not strs:
+            return ""
 
-        while isElem < notElem:
-            while isElem < notElem and A[isElem] != elem:
-                isElem += 1
-
-            if A[isElem] == elem:
-                count += 1
-
-            while isElem < notElem and A[notElem] == elem:
-                notElem -= 1
-                count +=1
-
-            A[isElem], A[notElem] = A[notElem], A[isElem]
-            isElem += 1
-            notElem -= 1
-        return len(A) - count
-
-s = Solution()
-print s.removeElement([0,4,4,0,4,4,4,0,2], 4)
+        i, j = 0, 0
+        while j < len(strs[0]):
+            i = 0
+            tmp = strs[0][j]
+            while i < len(strs):
+                if j >= len(strs[i]) or tmp != strs[i][j]:
+                    return strs[i][0:j] if j > 0 else ""
+                i +=1
+            j += 1
+        return strs[0][0:j] if j > 0 else ""
