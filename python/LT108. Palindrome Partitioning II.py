@@ -14,7 +14,7 @@ class Solution:
         # preparation
         isPalindrome = self.getIsPalindrome(s)
 
-        for i in range(n + 1):
+        for i in range(1, n + 1):
             for j in range(i):
                 if isPalindrome[j][i - 1]:
                     dp[i] = min(dp[i], dp[j] + 1)
