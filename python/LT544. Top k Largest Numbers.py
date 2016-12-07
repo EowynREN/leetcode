@@ -7,20 +7,20 @@ class Solution:
     def topk(self, nums, k):
         # Write your code here
         self.quickSort(nums, 0, len(nums) - 1, k)
-        return nums
+        return nums[:k]
 
     def quickSort(self, nums, left, right, k):
         if left >= right:
             return
 
         i, j = left, right
-        pivot = (left + right) / 2
+        pivot = nums[(left + right) / 2]
 
         while i <= j:
-            while i <= j and nums[i] > nums[pivot]:
+            while i <= j and nums[i] > pivot:
                 i += 1
 
-            while i <= j and nums[j] < nums[pivot]:
+            while i <= j and nums[j] < pivot:
                 j -= 1
 
             if i <= j:
