@@ -42,23 +42,3 @@ class Solution:
                        continue
                    queue.append(neighbor)
         return -1
-
-
-n1 = UndirectedGraphNode(1)
-n21 = UndirectedGraphNode(2)
-n22 = UndirectedGraphNode(2)
-n31 = UndirectedGraphNode(3)
-n32 = UndirectedGraphNode(3)
-n4 = UndirectedGraphNode(4)
-
-n1.neighbors.append(n21)
-n21.neighbors.append(n1)
-
-n4.neighbors.append(n4)
-n4.neighbors.append(n31)
-n31.neighbors.append(n4)
-
-graph = [n1, n21, n22, n31, n32, n4]
-
-s = Solution()
-s.sixDegrees(graph, n21, n22)
