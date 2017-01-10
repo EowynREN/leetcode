@@ -1,3 +1,5 @@
+# 思路: http://bookshadow.com/weblog/2016/11/22/leetcode-lfu-cache/
+
 class KeyNode:
     def __init__(self, key, val):
         self.key = key
