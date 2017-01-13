@@ -1,10 +1,10 @@
 # Definition for Undirected graph node
-class UndirectedGraphNode:
-    def __init__(self, x):
-        self.label = x
-        self.neighbors = []
+# class UndirectedGraphNode:
+#     def __init__(self, x):
+#         self.label = x
+#         self.neighbors = []
 
-# 思路：BFS
+# 思路：BFS + count node for each level
 
 class Solution:
     '''
