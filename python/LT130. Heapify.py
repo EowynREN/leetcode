@@ -4,7 +4,7 @@ class Solution:
     def heapify(self, A):
         # write your code here
         for i in range(len(A) / 2 - 1, -1, -1):
-            self.siftDown(A, i)
+            self.siftDown(A, i )
 
     def siftDown(self, A, parent):
         n = len(A)
