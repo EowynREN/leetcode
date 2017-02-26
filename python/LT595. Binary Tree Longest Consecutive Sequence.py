@@ -50,16 +50,45 @@ class Solution:
         seq = max(left_seq, right_seq)
         return seq + 1
 
+# simplified version 2
+class Solution2:
+    # @param {TreeNode} root the root of binary tree
+    # @return {int} the length of the longest consecutive sequence path
+
+    def __init__(self):
+        self.longest = 0
+
+    def longestConsecutive(self, root):
+        # Write your code here
+        self.helper(root)
+        return self.longest
+
+    def helper(self, node):
+        if not node:
+            return 0
+
+        left = self.helper(node.left)
+        right = self.helper(node.right)
+
+        subtree_longest = 1  # at least we have root
+        if node.left and node.left.val - 1 == node.val:
+            subtree_longest = max(subtree_longest, left + 1)
+
+        if node.right and node.right.val - 1 == node.val:
+            subtree_longest = max(subtree_longest, right + 1)
+
+        if subtree_longest > self.longest:
+            self.longest = subtree_longest
+
+        return subtree_longest
+
 t0 = TreeNode(2)
 t1 = TreeNode(3)
 t0.right = t1
-
 t2 = TreeNode(2)
 t1.left = t2
-
 t3 = TreeNode(1)
 t2.left = t3
-
 
 s = Solution()
 print s.longestConsecutive(t0)
