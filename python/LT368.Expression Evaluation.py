@@ -77,13 +77,13 @@ class Solution:
         # 逆波兰
         root = et.build(expression)
 
-        stack = self.postOrderTraversal(root, [])
-
+        stack = []
+        self.postOrderTraversal(root, stack)
         return stack[0] if stack else 0
 
     def postOrderTraversal(self, node, stack):
         if not node:
-            return stack
+            return
 
         self.postOrderTraversal(node.left, stack)
         self.postOrderTraversal(node.right, stack)
@@ -102,8 +102,6 @@ class Solution:
                 stack.append(first * second)
             else:
                 stack.append(first / second)
-
-        return stack
 
 
 s = Solution()
