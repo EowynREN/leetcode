@@ -18,5 +18,19 @@ class Solution:
                 maxSum = max(maxSum, nums[i])
         return maxSum
 
+    # version 2  2017.11.08
+    def maxSubArray(self, nums):
+        # write your code here
+        # 如果没有数,那么和就是0,意味没有
+        if not nums:
+            return 0
+
+        mx = sums = nums[0]
+        for i in xrange(1, len(nums)):
+            sums = max(nums[i], sums + nums[i])
+            mx = max(mx, sums)
+        return mx
+
+
 s = Solution()
 print s.maxSubArray([-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-1000])
