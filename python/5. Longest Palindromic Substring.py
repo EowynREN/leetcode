@@ -43,6 +43,43 @@ class Solution(object):
                     end = j - 1
         return s[start: end + 1]
 
+# 基于中心线枚举的方法
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if not s:
+            return ""
+
+        longest = ""
+        for mid in xrange(len(s)):
+            # 针对奇数长度的字符数
+            potential = self.isPalindormic(s, mid, mid)
+            if len(potential) > len(longest):
+                longest = potential
+
+            # 针对偶数长度的字符串
+            potential = self.isPalindormic(s, mid, mid + 1)
+            if len(potential) > len(longest):
+                longest = potential
+
+        return longest
+
+    # 已mid为基准心，像两边延伸
+    def isPalindormic(self, s, left, right):
+        while left >= 0 and right < len(s):
+            if s[left] != s[right]:
+                break
+
+            left -= 1
+            right += 1
+
+        # 因为循环结束，必然是因为
+        # 1.整个串已扫完，left现在是-1，而right超过length
+        # 2. s[left] != s[right], 此时需要把s[left]yu s[right]刨去，因为python的api不取最右的值，所以只许left+1即可
+        return s[left + 1: right]
 
 s = Solution()
 print s.longestPalindrome("cbbd")
