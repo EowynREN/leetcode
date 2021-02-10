@@ -1,5 +1,7 @@
 #-*- coding:utf8 -*-
 #coding=utf-8
+#-*- coding:utf8 -*-
+#coding=utf-8
 
 import sys
 class Solution(object):
@@ -34,6 +36,7 @@ class Solution(object):
             # 右移窗口
             right +=1
 
+            # -- 对称代码 --
             # 如果当前字符是需求字符，进行窗口内数据的一系列更新
             if c in need:
                 window[c] += 1
@@ -54,12 +57,13 @@ class Solution(object):
                 # 左移收缩窗口
                 left +=1
 
+                # -- 对称代码 --
                 if d in need:
                     if window[d] == need[d]:
                         valid -= 1
                     window[d] -= 1
 
-        return s[start: start + length] if length != sys.maxsize else ""
+        return s[start: start + length] if length != sy.maxsize else ""
 
 s = Solution()
 print s.minWindow("ADOBECODEBANC", "ABC")
