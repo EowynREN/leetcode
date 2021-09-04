@@ -14,6 +14,13 @@ class Solution(object):
         # base case: text1 to "", LCS is 0
         #            "" to text2, LCS is 0
 
+        # inferal cases:
+        #               1. current char in text1 and text 2 are common to both strings -> one in LCS
+        #               2. current char in text1 and text 2 are not common to both strings
+        #                  2.1 text1[i] is not in the LCS
+        #                  2.2 text2[j] is not in the LCS
+        #                  2.3 neither text1[i] or textj[2] is in LCS
+        
         for i in range(1, n + 1):
             for j in range(1, m + 1):
                 # current char are same in text1 and text2, +1 for LCS
