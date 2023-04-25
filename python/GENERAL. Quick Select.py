@@ -51,4 +51,4 @@ class Solution:
         return nums[j + 1]
 
 s = Solution()
-print s.kthLargestElement(10, [1,2,3,4,5,6,8,9,10,7])
+print (s.kthLargestElement(10, [1,2,3,4,5,6,8,9,10,7]))

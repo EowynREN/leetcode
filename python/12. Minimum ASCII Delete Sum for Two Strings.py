@@ -29,3 +29,5 @@ class Solution(object):
         return dp[n][m]
 
 
+s = Solution()
+print(s.minimumDeleteSum("ab", "abc"))
