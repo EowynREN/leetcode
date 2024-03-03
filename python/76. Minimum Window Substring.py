@@ -63,7 +63,7 @@ class Solution(object):
                         valid -= 1
                     window[d] -= 1
 
-        return s[start: start + length] if length != sy.maxsize else ""
+        return s[start: start + length] if length != sys.maxsize else ""
 
 s = Solution()
-print s.minWindow("ADOBECODEBANC", "ABC")
+print (s.minWindow("ADOBECODEBANC", "ABC"))
