@@ -22,6 +22,7 @@ class UnionFind:
         while ancestor != self.father[ancestor]:
             ancestor = self.father[ancestor]
 
+        # compress the path for each node on this route
         while x != self.father[x]:
             next = self.father[x]
             self.father[x] = ancestor
@@ -65,9 +66,9 @@ class Solution:
             # 创建一个岛屿,先+1
             islands[opr.x][opr.y] = 1
             count += 1
-            for pos in [[0,1],[0,-1],[1,0],[-1,0]]:
-                x = opr.x + pos[0]
-                y = opr.y + pos[1]
+            for dx, dy in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+                x = opr.x + dx
+                y = opr.y + dy
                 # check边界条件
                 if self.valid(islands, x, y):
                     # 此处注意: 一定要check当前的(i, j)和即将扫描的上下左右,是否在一个集合里
