@@ -20,8 +20,6 @@ class Solution(object):
 
         #     如果当前pivot's index等于k,则表示这个pivot就是第k大的数
         #     因此返回pivot
-
-
         #time: O(n) space: O(1)
         if not nums:
             return 0
@@ -48,10 +46,8 @@ class Solution(object):
 
     def partition(self, nums, left, right):
         pivot = nums[left]
-
         # 因为不是取中间值作为pivot,不能够再从左右两边向里挪指针
         # 需要下面这种处理方法,将小于pivot的数挪到pivot左边,讲大于的数挪到右边
-
         # 为什么是 left < right 而不是 <= ,
         # 因为当跳出while循环的时候left = right
         # 两个指针正好一起直到pivot的地方
@@ -74,7 +70,6 @@ class Solution(object):
         # 左边的值逗比它小， 右边的值都比它大
         # 这里正好放置pivot
         nums[left] = pivot
-
         return left
 
 s = Solution()

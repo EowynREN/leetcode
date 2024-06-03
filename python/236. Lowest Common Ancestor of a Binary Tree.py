@@ -16,6 +16,19 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
+        """
+        # 经典问题了，先给出递归函数的定义：给该函数输入三个参数 root，p，q，它会返回一个节点：
+
+        # 情况 1，如果 p 和 q 都在以 root 为根的树中，函数返回的即使 p 和 q 的最近公共祖先节点。
+        # 情况 2，那如果 p 和 q 都不在以 root 为根的树中怎么办呢？函数理所当然地返回 null 呗。
+        # 情况 3，那如果 p 和 q 只有一个存在于 root 为根的树中呢？函数就会返回那个节点。
+
+        # 根据这个定义，分情况讨论：
+
+        # 情况 1，如果 p 和 q 都在以 root 为根的树中，那么 left 和 right 一定分别是 p 和 q（从 base case 看出来的）。
+        # 情况 2，如果 p 和 q 都不在以 root 为根的树中，直接返回 null。
+        # 情况 3，如果 p 和 q 只有一个存在于 root 为根的树中，函数返回该节点。
+        """
 
         # base case
         if not root:
@@ -24,23 +37,14 @@ class Solution(object):
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
-        # condition 1: 当前节点是不是p或者q
         if p == root or q == root:
             return root
 
-        # condition 2: p和q分别在左右子树里, 那么当前节点就是最近公共祖先
+        # 情况 1
         if left and right:
             return root
-
-        # condition 3:
-        # p或q在左子树里,返回任何左子树返回的节点
-        if left:
-            return left
-
-        # condition 3:
-        # p或q在右子树里,返回任何右子树返回的节点
-        if right:
-            return right
-
-        # 啥都没找到,返回none,表示一无所获
-        return None
+        # 情况 2
+        if not left and not right:
+            return None
+        # 情况 3
+        return right if not left else left

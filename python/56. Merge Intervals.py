@@ -38,3 +38,31 @@ class Solution(object):
             else:
                 res[-1][1] = max(res[-1][1], interval[1])
         return res
+
+# 03/27/2024
+class Solution(object):
+    from typing import List
+
+    def merge(intervals: List[List[int]]) -> List[List[int]]:
+        # 如果输入为空的情况，直接返回空列表
+        if not intervals:
+            return []
+        # 按区间的 start 升序排列
+        intervals.sort(key=lambda x: x[0])
+        # 存储合并后的区间
+        res = [intervals[0]]
+
+        # 合并区间
+        for interval in intervals[1:]:
+            # 找到最后一个区间
+            last = res[-1]
+
+            # last.end >= interval.start
+            if last[1] >= interval[0]:
+                # 合并，并更新最大的 end
+                last[1] = max(last[1], interval[1])
+            else:
+                # 处理下一个待合并区间
+                res.append(interval)
+
+        return res
