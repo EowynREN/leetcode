@@ -20,3 +20,34 @@ class Solution(object):
 
             root = root.right if target > root.val else root.left
         return closest
+
+
+class Solution2(object):
+    def __init__(self):
+        self.closest = 0
+
+    def closestValue(self, root, target):
+        """
+        :type root: TreeNode
+        :type target: float
+        :rtype: int
+        """
+        self.closest = root.val
+        self.traverse(root, target)
+        return self.closest
+
+    def traverse(self, node, target):
+        if not node:
+            return
+
+        if target < node.val:
+            self.traverse(node.left, target)
+
+            if abs(target - node.val) < abs(target - self.closest):
+                self.closest = node.val
+        else:
+            if abs(target - node.val) < abs(target - self.closest):
+                self.closest = node.val
+
+            self.traverse(node.right, target)
+
